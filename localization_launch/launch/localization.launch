@@ -13,10 +13,10 @@
       </include>
     </group>
     <!-- twist_estimator module -->
-    <group ns="twist_estimator">
+    <!-- <group ns="twist_estimator">
       <include file="$(find localization_launch)/launch/twist_estimator/twist_estimator.launch">
       </include>
-    </group>
+    </group> -->
     <!-- pose_twist_fusion_filter module -->
     <group ns="pose_twist_fusion_filter">
       <include file="$(find localization_launch)/launch/pose_twist_fusion_filter/pose_twist_fusion_filter.launch">
