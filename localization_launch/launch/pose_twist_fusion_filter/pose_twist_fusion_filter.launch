@@ -10,7 +10,7 @@
     <arg name="input_pose_name" default="/localization/pose_estimator/pose"/>
     <arg name="input_pose_with_cov_name" default="/localization/pose_estimator/pose_with_covariance"/>
     <arg name="input_twist_name" default="/twist"/>
-    <arg name="input_twist_with_cov_name" default="/twist_with_covariance"/>
+    <arg name="input_twist_with_cov_name" default="/localization/twist_estimator/twist_with_covariance"/>
     <arg name="output_pose_name" default="pose"/>
     <arg name="output_pose_with_covariance_name" default="pose_with_covariance"/>
     <arg name="output_pose_without_yawbias_name" default="pose_without_yawbias"/>
@@ -18,9 +18,9 @@
     <arg name="output_twist_name" default="/localization/twist"/>
     <arg name="output_twist_with_covariance_name" default="/localization/twist_with_covariance"/>
 
-    <arg name="twist_stddev_wz" default="0.003 "/>
+    <arg name="twist_stddev_wz" default="10.0 "/>
 
-    <arg name="proc_stddev_vx_c" default="10.0"/>
-    <arg name="proc_stddev_wz_c" default="5.0"/>
+    <arg name="proc_stddev_vx_c" default="0.5"/>
+    <arg name="proc_stddev_wz_c" default="10.0"/>
   </include>
 </launch>

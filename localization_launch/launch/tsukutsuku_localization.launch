@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="input_sensor_points_topic" default="/sensing/velodyne_lower/rectified/pointcloud_ex" doc="Sensor points topic"/>
+  <arg name="input_vehicle_twist_topic" default="/ypspur/twist" doc="" />
+  <arg name="input_imu_topic" default="/sensing/imu/gx5/nav/filtered_imu/data" doc="" />
+
+      <include file="$(find yp_launch)/launch/data_collection.launch"/>
+
+      <include file="$(find localization_launch)/launch/localization.launch">
+        <arg name="input_sensor_points_topic" default="$(arg input_sensor_points_topic)"/>
+        <arg name="input_vehicle_twist_topic" default="$(arg input_vehicle_twist_topic)"/>
+        <arg name="input_imu_topic" default="$(arg input_imu_topic)"/>
+      </include>
+
+</launch>

@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="input_vehicle_twist_topic" default="" doc="" />
+  <arg name="input_imu_topic" default="" doc="" />
+
   <include file="$(find gyro_odometer)/launch/gyro_odometer.launch">
+    <arg name="input_vehicle_twist_topic" default="$(arg input_vehicle_twist_topic)" />
+    <arg name="input_imu_topic" default="$(arg input_imu_topic)"/>
+    
     <arg name="output_twist_topic" value="/localization/twist_estimator/twist" doc="" />
     <arg name="output_twist_with_covariance_topic" value="/localization/twist_estimator/twist_with_covariance" doc="" />
   </include>

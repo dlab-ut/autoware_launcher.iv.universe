@@ -1,10 +1,18 @@
 <?xml version="1.0"?>
 <launch>
+
+  <arg name="input_sensor_points_topic" default="/sensing/velodyne_lower/rectified/pointcloud_ex" doc="Sensor points topic"/>
+  <arg name="input_vehicle_twist_topic" default="/ypspur/twist" doc="" />
+  <arg name="input_imu_topic" default="/sensing/imu/gx5/nav/filtered_imu/data" doc="" />
+  <arg name="output_downsample_sensor_points_topic" default="downsample/pointcloud" doc="Sensor points topic"/>
+
   <!-- localization module -->
   <group ns="localization">
     <!-- util module -->
     <group ns="util">
-      <include file="$(find localization_launch)/launch/util/util.launch">
+      <include file="$(find localization_launch)/launch/util/util.launch" output="screen">
+        <arg name="input_sensor_points_topic" default="$(arg input_sensor_points_topic)"/>
+        <arg name="output_downsample_sensor_points_topic" default="$(arg output_downsample_sensor_points_topic)"/>
       </include>
     </group>
     <!-- pose_estimator module -->
@@ -13,10 +21,12 @@
       </include>
     </group>
     <!-- twist_estimator module -->
-    <!-- <group ns="twist_estimator">
+    <group ns="twist_estimator">
       <include file="$(find localization_launch)/launch/twist_estimator/twist_estimator.launch">
+        <arg name="input_vehicle_twist_topic" default="$(arg input_vehicle_twist_topic)"/>
+        <arg name="input_imu_topic" default="$(arg input_imu_topic)"/>
       </include>
-    </group> -->
+    </group>
     <!-- pose_twist_fusion_filter module -->
     <group ns="pose_twist_fusion_filter">
       <include file="$(find localization_launch)/launch/pose_twist_fusion_filter/pose_twist_fusion_filter.launch">
